@@ -43,11 +43,14 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Hello, my name is ${::hostname}": }
-  file { '/etc/motd':
-    ensure => file,
-    owner => 'demo',
-    group => 'demo',
-    mode => '0777',
-    content => "Learing Puppet",
-    }
+  # file { '/etc/motd':
+  #  ensure => file,
+  #  owner => 'demo',
+  #  group => 'demo',
+  #  mode => '0777',
+  #  content => "Learing Puppet",
+  # }
+  file_line { 'hostnameadd':
+    path => '/etc/hosts',
+    line => '127.0.0.1 testing.puppetlabs.vm',
 }
