@@ -45,6 +45,6 @@ node default {
   # notify { "Hello, my name is ${::hostname}": }
   file { '/etc/motd':
     owner => 'demo',
-    content => "Learing Pupprt\n",
+    content => "Learing Pupprt",
     }
 }
