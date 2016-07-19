@@ -53,4 +53,5 @@ node default {
   file_line { 'hostnameadd':
     path => '/etc/hosts',
     line => '127.0.0.1 testing.puppetlabs.vm',
+  }
 }
