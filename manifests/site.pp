@@ -55,7 +55,7 @@ node default {
   #  line => '127.0.0.1 testing.puppetlabs.vm',
   #}
   exec { 'motd':
-    path  => '/usr/bin:/usr/sbin:/bin',
+    path  => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
     command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
     onlyif => 'test `cat /etc/motd |grep Puppet>/dev/null;echo $?` -eq 0',
     }
