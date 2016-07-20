@@ -50,8 +50,13 @@ node default {
   #  mode => '0777',
   #  content => "Learing Puppet",
   # }
-  file_line { 'hostnameadd':
-    path => '/etc/hosts',
-    line => '127.0.0.1 testing.puppetlabs.vm',
-  }
+  #file_line { 'hostnameadd':
+  #  path => '/etc/hosts',
+  #  line => '127.0.0.1 testing.puppetlabs.vm',
+  #}
+  exec { 'motd':
+    path  => '/usr/bin:/usr/sbin:/bin',
+    command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+    onlyif => 'test `cat /etc/motd |grep Puppet>/dev/null;echo $?` -eq 0',
+    }
 }
