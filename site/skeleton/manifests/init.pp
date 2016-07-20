@@ -8,7 +8,7 @@ file { '/etc/skel/.bashrc':
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
-  require => File['/etc/skel']
+  require => File['/etc/skel'],
   source  => 'puppet:///modules/skeleton/bashrc',
 }
 }
