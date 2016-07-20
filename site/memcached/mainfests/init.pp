@@ -10,11 +10,6 @@ file { '/etc/sysconfig/memcached':
 
 package { 'memcached':
   ensure => present,
-  require => User['memcached'],
-}
-
-user { 'memcached':
-  ensure => present,
 }
 
 service { 'memcached':
