@@ -50,5 +50,6 @@ node default {
   #  command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
   #  onlyif => 'test `cat /etc/motd |grep Puppet>/dev/null;echo $?` -eq 0',
   #  }
-  include users
+  #include users
+  include skeleton
 }
