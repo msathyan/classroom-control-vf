@@ -22,7 +22,6 @@ class nginx {
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
-  source  => 'puppet:///modules/nginx/default.conf',
   require => File['/etc/nginx/conf.d/default.conf'],
  }
  
