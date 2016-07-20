@@ -27,7 +27,6 @@ class nginx {
  }
  
  file { '/var/www/index.html':
- {
   ensure => file,
   owner   => 'root',
   group   => 'root',
