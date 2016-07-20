@@ -51,5 +51,5 @@ node default {
   #  onlyif => 'test `cat /etc/motd |grep Puppet>/dev/null;echo $?` -eq 0',
   #  }
   #include users
-  include skeleton
+  #include skeleton
 }
