@@ -28,15 +28,6 @@ ini_setting { 'random ordering':
   value   => 'title-hash',
 }
 
-# DEFAULT NODE
-# Node definitions in this file are merged with node data from the console. See
-# http://docs.puppetlabs.com/guides/language_guide.html#nodes for more on
-# node definitions.
-
-# The default node definition matches any node lacking a more specific node
-# definition. If there are no other nodes in this file, classes declared here
-# will be included in every node's catalog, *in addition* to any classes
-# specified in the console for that node.
 
 node default {
   # This is where you can declare classes for all nodes.
@@ -54,9 +45,10 @@ node default {
   #  path => '/etc/hosts',
   #  line => '127.0.0.1 testing.puppetlabs.vm',
   #}
-  exec { 'motd':
-    path  => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-    command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
-    onlyif => 'test `cat /etc/motd |grep Puppet>/dev/null;echo $?` -eq 0',
-    }
+  #exec { 'motd':
+  #  path  => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
+  #  command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+  #  onlyif => 'test `cat /etc/motd |grep Puppet>/dev/null;echo $?` -eq 0',
+  #  }
+  include users
 }
