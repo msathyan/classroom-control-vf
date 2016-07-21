@@ -52,5 +52,8 @@ node default {
   #  }
   #include users
   #include skeleton
-  
+  if $facts['is_virtual'] == true {
+   $disp=capitalize($facts['virtual'])
+   notify {"this is ${disp}":}
+  }
 }
