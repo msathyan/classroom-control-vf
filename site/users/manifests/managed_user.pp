@@ -1,9 +1,9 @@
-define user::managed_user (
+define users::managed_user (
     $username = $title,
     $homedir = "/home/$title",
     $usergroup = 'foo',
 ) {
-  user { "$title" :
+  user { "$title":
     ensure  => present,
     groups  => "$usergroup",
     home    => "$homedir",
