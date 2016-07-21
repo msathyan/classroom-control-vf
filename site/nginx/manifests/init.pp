@@ -8,13 +8,20 @@ class nginx {
   require => Package['nginx'],
  }
 
+ file { '/etc/nginx/conf.d':
+  ensure  => directory,
+  owner   => 'root',
+  group   => 'root',
+  mode    => '0644',
+  require => File['/etc/nginx/nginx.conf'],
+ }
+
  file { '/etc/nginx/conf.d/default.conf':
   ensure  => file,
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
   source  => 'puppet:///modules/nginx/default.conf',
-  require => File['/etc/nginx/nginx.conf'],
  }
  
  file { '/var/www':
