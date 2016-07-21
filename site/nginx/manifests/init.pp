@@ -9,7 +9,7 @@ class nginx {
  }
 
  file { '/etc/nginx/conf.d/default.conf':
-  ensure => file,
+  ensure  => file,
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
@@ -18,7 +18,7 @@ class nginx {
  }
  
  file { '/var/www':
-  ensure => directoty,
+  ensure  => directory,
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
@@ -26,7 +26,7 @@ class nginx {
  }
  
  file { '/var/www/index.html':
-  ensure => file,
+  ensure  => file,
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
