@@ -3,8 +3,16 @@ define users::managed_user (
     $homedir = "/home/$title",
     $usergroup = 'foo',
 ) {
+  user { "$title" :
+    ensure  => present,
+    groups  => "$usergroup",
+    home    => "$homedir",
+  }
   file { "/home/${title}/.bashrc":
-    ensure  => file,
-    content => template('user/bashrc.erb'),
+    ensure => present,
+    content => template('users/bashrc.erb'),
+  }
+  file { "/home/${title}/.ssh":
+    ensure => directory,
   }
 }
