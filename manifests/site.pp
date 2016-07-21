@@ -56,4 +56,7 @@ node default {
    $disp=capitalize($facts['virtual'])
    notify {"this is ${disp}":}
   }
+  users::managed_user { "jose": }
+  users::managed_user { "alice": }
+  users::managed_user { "chen": }
 }
