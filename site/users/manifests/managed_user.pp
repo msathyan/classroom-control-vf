@@ -5,8 +5,8 @@ define users::managed_user (
 ) {
   user { "$title":
     ensure  => present,
-    groups  => "$usergroup",
-    home    => "$homedir",
+    groups  => $usergroup,
+    home    => $homedir,
   }
   file { "/home/${title}/.bashrc":
     ensure => present,
