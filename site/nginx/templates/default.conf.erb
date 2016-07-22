@@ -1,6 +1,6 @@
  server {
     listen 80;
-    <% if @OSV == 'windows' -%>
+    <% if @osv == 'windows' -%>
       root C:/ProgramData/nginx/html
     <% else -%>
       root /var/www;
