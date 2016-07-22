@@ -1,4 +1,4 @@
-class nginx {
+class nginx::debian {
 File{
   owner   => 'root',
   group   => 'root',
@@ -7,7 +7,7 @@ File{
 
  file { '/etc/nginx/nginx.conf':
   ensure  => file,
-  source  => 'puppet:///modules/nginx/nginx.conf',
+  content => template('nginx/nginx.conf.erb'),
   require => Package['nginx'],
  }
 
@@ -18,33 +18,21 @@ File{
 
  file { '/etc/nginx/conf.d/default.conf':
   ensure  => file,
-  source  => 'puppet:///modules/nginx/default.conf',
+  content => template('nginx/default.conf.erb'),
  }
  
- file { 'docroot':
+ file { '/var/www':
   ensure  => directory,
   require => File['/etc/nginx/conf.d/default.conf'],
  }
  
-  file { 'html':
+  file { '/var/www/index.html':
   ensure  => file,
-  path   => $::operatingsystem ? {
-    'Debian'  => '/var/www/index.html',
-    'Redhat'  => '/var/www/index.html',
-    'Windows' => 'C:/ProgramData/nginx/html',
-    default   => '/var/www/index.html',
-  },
   source  => 'puppet:///modules/nginx/index.html',
  }
  
  package { 'nginx':
   ensure => present,
-  name   => $::operatingsystem ? {
-    'Debian'  => 'nginx',
-    'Redhat'  => 'nginx',
-    'Windows' => 'nginx-service',
-    default   => 'nginx',
-  },
  }
 
  service { 'nginx':
