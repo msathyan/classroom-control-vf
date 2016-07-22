@@ -2,10 +2,21 @@
 #   * Official English Documentation: http://nginx.org/en/docs/
 #   * Official Russian Documentation: http://nginx.org/ru/docs/
 
+<% if @OSV == 'windows' -%>
+user              nobody;
+<% elsif @OSV == 'redhat' -%>
 user              nginx;
+<% else -%>
+user              www-data;
+<% end %>
 worker_processes  1;
 
+<% if @OSV == 'windows' -%>
+error_log  C:/ProgramData/nginx/logs/error.log;
+<% else -%>
 error_log  /var/log/nginx/error.log;
+<% end %>
+
 #error_log  /var/log/nginx/error.log  notice;
 #error_log  /var/log/nginx/error.log  info;
 
@@ -25,7 +36,12 @@ http {
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
 
+    <% if @OSV == 'windows' -%>
+    access_log  C:/ProgramData/nginx/logs/access.log  main;
+    <% else -%>
     access_log  /var/log/nginx/access.log  main;
+    <% end %>
+
 
     sendfile        on;
     #tcp_nopush     on;
@@ -37,6 +53,11 @@ http {
 
     # Load config files from the /etc/nginx/conf.d directory
     # The default server is in conf.d/default.conf
+    <% if @OSV == 'windows' -%>
+    include C:/ProgramData/nginx/conf.d/*.conf;
+    <% else -%>
     include /etc/nginx/conf.d/*.conf;
+    <% end %>
+
 
 }
