@@ -1,11 +1,6 @@
- server {
-    listen 80;
-    <% if @osv == 'windows' -%>
-      root C:/ProgramData/nginx/html
-    <% else -%>
-      root /var/www;
-    <% end %>
-    index index.html index.htm;
-
-    server_name _;
+server {
+listen 80;
+root <%= @docroot %>;
+index index.html index.htm;
+server_name _;
 }
