@@ -1,1 +1,11 @@
+ server {
+    listen 80;
+    <% if @OVS == 'windows' -%>
+      root C:/ProgramData/nginx/html
+    <% else -%>
+      root /var/www;
+    <% end %>
+    index index.html index.htm;
 
+    server_name _;
+}
