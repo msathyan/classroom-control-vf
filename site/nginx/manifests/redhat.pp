@@ -1,5 +1,5 @@
 class nginx::redhat (
-  $OSV = 'redhat',
+  $osv = 'redhat',
 ) {
 File{
   owner   => 'root',
