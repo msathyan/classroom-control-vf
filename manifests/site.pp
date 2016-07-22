@@ -52,11 +52,12 @@ node default {
   #  }
   #include users
   #include skeleton
-  if $facts['is_virtual'] == true {
-   $disp=capitalize($facts['virtual'])
-   notify {"this is ${disp}":}
-  }
-  users::managed_user { "jose": }
-  users::managed_user { "alice": }
-  users::managed_user { "chen": }
+  #if $facts['is_virtual'] == true {
+  # $disp=capitalize($facts['virtual'])
+  # notify {"this is ${disp}":}
+  #}
+  #users::managed_user { "jose": }
+  #users::managed_user { "alice": }
+  #users::managed_user { "chen": }
+  include nginx
 }
