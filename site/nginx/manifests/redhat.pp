@@ -1,4 +1,6 @@
-class nginx::redhat {
+class nginx::redhat (
+  $OSV = 'redhat',
+) {
 File{
   owner   => 'root',
   group   => 'root',
