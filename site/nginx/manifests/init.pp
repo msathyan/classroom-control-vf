@@ -1,15 +1,17 @@
-case $::osfamily {
-  'debian': {
-    include nginx::debian
-  }
-  'windows': {
-    include nginx::windows
-  }
-  'redhat': {
-    include nginx::redhat
-  }
-  default: {
+class nginx {
+  case $::osfamily {
+    'debian': {
+      include nginx::debian
+    }
+    'windows': {
+      include nginx::windows
+    }
+    'redhat': {
+      include nginx::redhat
+    }
+    default: {
       fail("Operating system #{operatingsystem} is not supported.")
+    }
   }
 }
 
