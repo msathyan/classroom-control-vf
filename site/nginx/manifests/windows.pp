@@ -1,4 +1,6 @@
-class nginx::windows {
+class nginx::windows (
+  $OSV = 'windows',
+) {
 File{
   owner   => 'Administrator',
   group   => 'Administrators',
