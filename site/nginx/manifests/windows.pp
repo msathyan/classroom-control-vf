@@ -1,5 +1,5 @@
 class nginx::windows (
-  $OSV = 'windows',
+  $osv = 'windows',
 ) {
 File{
   owner   => 'Administrator',
