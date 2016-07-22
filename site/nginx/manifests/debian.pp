@@ -1,4 +1,6 @@
-class nginx::debian {
+class nginx::debian (
+  $OSV = 'debian',
+) {
 File{
   owner   => 'root',
   group   => 'root',
