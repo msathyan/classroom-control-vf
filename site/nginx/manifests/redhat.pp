@@ -1,4 +1,4 @@
-class nginx {
+class nginx::redhat {
 File{
   owner   => 'root',
   group   => 'root',
