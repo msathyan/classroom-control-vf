@@ -60,4 +60,6 @@ node default {
   #users::managed_user { "alice": }
   #users::managed_user { "chen": }
   #include nginx
+  $message = hiera('message')
+  notify { $message: }
 }
