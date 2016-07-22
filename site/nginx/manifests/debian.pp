@@ -1,5 +1,5 @@
 class nginx::debian (
-  $OSV = 'debian',
+  $osv = 'debian',
 ) {
 File{
   owner   => 'root',
